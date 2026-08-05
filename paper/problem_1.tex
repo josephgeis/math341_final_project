@@ -1,7 +1,65 @@
 \begin{problem}
-    The problem of Fourier Series is very trivial. This is left as an exercise to the reader. As a reminder,
-    \[1+2=3 \in \N\]
+
+
+    \begin{enumerate}[(a)]
+
+        \item We begin an investigation of the partial differential equation published by Jean Le Rond d'Alembert (1717-1783) to describe the motion of a vibrating string:
+            \begin{equation}
+                u_{xx}(x,t) = u_{tt}(x,t) 
+            \end{equation} 
+            The model includes a function, $u(x,t)$ which represents the displacement of the string at time $t \geq 0$ and at the point $x \in [0,\pi]$. 
+            Since the string is attached at the ends, we get the second equation  
+            \begin{equation}
+                u(0,t) = 0 \quad \text{and} \quad u(\pi,t) = 0
+            \end{equation}
+            At time $t=0$, the string is displaced some initial amount, so the instantaneous moment that the string is released is modeled by
+            \begin{equation}
+                u_t (x,0) = 0
+            \end{equation}
+            We notice that we are given an initial veolocity of 0. The task now is to find a function $u(x,t)$ that satisfies (1), (2), and (3). It is proposed that such an equation looks like 
+            \begin{equation}
+                u(x,t) = b_n \sin(nx) \cos(nt) 
+            \end{equation}
+            for any choice of $n \in \N$ and $b_n \in \R$.
+            \begin{proof} Let $u(x,t) = b_n \sin(nx) \cos(nt)$ where $n \in \N$ and $b_n \in \R$.
+
+                (1) Computing each second partial derivative yields
+                \begin{align}
+                D_{x} u(x,t) &= b_n n \cos(nx) \cos(nt) \\
+                D_{xx} u(x,t) &= -b_n n^2 \sin(nx) \cos(nt)
+                \end{align}
+                
+                \begin{align}
+                \label{align:dt}
+                D_{t} u(x,t) &= -b_n n \sin(nx) \sin(nt) \\
+                D_{tt} u(x,t) &= -b_n n^2 \sin(nx) \cos(nt)
+                \end{align}
+
+                We see that $D_{xx} = D_{tt}$.
+
+                (2) We now observe $u(0,t)$ and $u(\pi,t)$.
+                \begin{equation}
+                    u(0,t) = b_n \sin(n0) \cos(nt) = 0
+                \end{equation}
+                \begin{equation}
+                \label{equation:sinpi}
+                    u(\pi,t) = b_n \sin(n \pi) \cos(nt) = 0
+                \end{equation}
+
+                (3) We computed $u_t$ previously in \eqref{align:dt}. It follows that 
+                \begin{equation}
+                    u_t(x,0) = -b_n n \sin(nx) \sin(n0) = 0.
+                \end{equation}
+                
+            \end{proof}
+            We see that $n\in\N$ is a necessary condition for these equations, particularly in \eqref{equation:sinpi}, in order to ensure that $\sin(n\pi)=0$ Some $n\not\in\N$ results in a non-zero value of $\sin(n\pi)$
+
+            \item Any finite sum of functions of the form (4) would also satisfy (1), (2), and (3). 
+
+    \end{enumerate}
+
+    We land at d'Alembert's \textit{wave equation} 
     \begin{equation}
-        \Omega = \left\{ \int_{-\infty}^{\infty} \frac{\partial^2}{\partial x^2} \exp\left( -\frac{ \left( \sum_{i=1}^{n} x_i \cdot \prod_{j=1}^{m} y_{ij} \right)^{ \frac{1}{p} } }{ \left[ \frac{\sqrt{x + \sqrt{y}}}{\mathbf{M}_{ \mu \nu } \cdot \mathbb{A}^{ \dagger } } \right] } \right) dx \right\}^{\frac{-1}{\infty \cdot \aleph_0}}
+        u(x,t) = \sum_{n=1}^{N} b_n \sin(nx) \cos(nt).
     \end{equation}
 \end{problem}
