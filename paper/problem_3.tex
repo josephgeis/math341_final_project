@@ -1,0 +1,57 @@
+\begin{problem}
+\label{exercise3}
+    Fourier introduced a formulation for representing some function $f(x)$ in terms of sines and cosines given suitable coefficients $(a_n)$ and $(b_n)$: 
+    \begin{equation}
+    \label{problem3:1}
+        f(x) = a_0 + \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx)
+    \end{equation}
+    We are given a derivation for $a_0$ by starting with \cref{problem3:1} and taking the integral of both sides:
+    \begin{equation}
+        a_0 = \frac{1}{2\pi} \int_{-\pi}^{\pi}f(x) \, dx
+    \end{equation}
+    We use a similar method to derive the constants $a_m$ and $b_m$. Consider a fixed $m \geq 1$. We can now derive $a_m$ and $b_m$ from \cref{problem3:1}.
+    To derive $a_m$, we start with
+    \begin{equation}
+        f(x) = a_0 + \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) 
+    \end{equation}
+    Multiplying both sides by $\cos(mx)$ and integrating both sides yields
+    \begin{equation}
+        \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx = \int_{-\pi}^{\pi} a_0 \cos(mx) \, dx + \int_{-\pi}^{\pi} \left( \cos(mx) \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \right) \, dx. 
+    \end{equation}
+    The integral with $a_0$ resolves to 0, so the derivation continues as
+    \begin{align}
+        \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx &= \int_{-\pi}^{\pi} \left( \cos(mx) \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \right) \, dx \\
+        &= \int_{-\pi}^{\pi} \left( \sum_{n=1}^{\infty} a_n \cos(nx) \cos(mx) + b_n \sin(nx) \cos(mx) \right) \, dx \\
+        &= \sum_{n=1}^{\infty} \left( \int_{-\pi}^{\pi} a_n \cos(nx) \cos(mx) + b_n \sin(nx) \cos(mx) \, dx \right) \\
+        &= \sum_{n=1}^{\infty} \int_{-\pi}^{\pi} a_n \cos(nx) \cos(mx) + 0 \, dx
+    \end{align}
+    Observing the integral, we see that $\cos(nx)\cos(mx)$ is 0 whenever $n \neq m$, and equals $\pi$ whenever $n=m$. Thus, the right hand side gets replaced with 
+    \begin{equation}
+        a_m \int_{-\pi}^{\pi} \cos^2(mx) \, dx = a_m \pi.
+    \end{equation}
+    Dividing both sides by $\pi$ yields the desired result:
+    \begin{equation}
+        a_m = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx.
+    \end{equation}
+
+    We follow the same process to derive $b_n$, but instead of multiplying by $\cos(mx)$, we multiply by $\sin(mx)$ and integrate.
+    \begin{align*}
+        f(x) &= a_0 + \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \\
+        \int_{-\pi}^{\pi} f(x) \sin(mx) \, dx &= \int_{-\pi}^{\pi} a_0 \sin(mx) \, dx + \int_{-\pi}^{\pi} \left( \sin(mx) \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \right) \, dx. \\
+         &= \int_{-\pi}^{\pi} \left( \sum_{n=1}^{\infty} a_n \cos(nx) \sin(mx) + b_n \sin(nx) \sin(mx) \right) \, dx \\
+         &= \sum_{n=1}^{\infty} \left( \int_{-\pi}^{\pi} a_n \cos(nx) \sin(mx) + b_n \sin(nx) \sin(mx) \, dx \right) \\
+         &= \sum_{n=1}^{\infty} \int_{-\pi}^{\pi} b_n \sin(nx) \sin(mx) \, dx
+    \end{align*}
+    We see the same pattern where the terms of the sum equal 0 unless $n=m$. Since the integral resolves to $b_m\pi$, We land at
+    \begin{equation}
+        b_m = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(mx) \, dx.
+    \end{equation}
+
+    Thus, we have derived the following formulas for the constants $a_n$ and $b_n$:
+    \begin{equation}
+        a_m = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx 
+        \quad \text{and} \quad 
+        b_m = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin(mx) \, dx
+    \end{equation}
+    for all $m \geq 1$.
+\end{problem}
