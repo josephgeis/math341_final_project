@@ -1,0 +1,135 @@
+%!TEX root = project.tex
+\begin{problem}
+    Using trigonometric identities when necessary, verify the following integrals.
+    \begin{enumerate}[(a)]
+        \item For all \(n \in \N\)
+        \begin{equation}
+        	\int_{-\pi}^{\pi} \cos(nx) ~dx = 0
+        	\text{ and }
+       		\int_{-\pi}^{\pi} \sin(nx) ~dx = 0
+        \end{equation}
+        
+        \begin{proof}
+        	Consider that \(D_x \sin(nx) = n\cos(nx)\), thus \(D_x\left[\frac{1}{n}\sin(nx)\right] = \cos(nx)\) and \(\sin(n\pi) = 0\) for all \(n \in \N\). Then it
+			follows that
+			\begin{align}
+			\int_{-\pi}^{\pi} \cos(nx) ~dx & = \left.\frac{1}{n}\sin(nx)\right|_{x=-\pi}^{x=\pi} \\
+			& = \frac{1}{n}\left[ \sin(n\pi) - \sin(-n\pi) \right] \\
+			& = \frac{1}{n}\left[ \sin(n\pi) + \sin(n\pi) \right] \\
+			& = \frac{1}{n} \cdot 0 \\
+			& = 0
+			\end{align}
+			
+			Then, consider that \(D_x \cos(nx) = -n\sin(nx)\), thus \(D_x\left[-\frac{1}{n} \cos(nx)\right] = \sin(nx)\) and \(\cos(-t) = \cos(t)\) for all \(t \in \R\). Then it
+			follows that
+			\begin{align}
+			\int_{-\pi}^{\pi} \sin(nx) ~dx & = \left.-\frac{1}{n}\cos(nx)\right|_{x=-\pi}^{x=\pi} \\
+			& = -\frac{1}{n}\left[ \cos(n\pi) - \cos(-n\pi) \right] \\
+			& = -\frac{1}{n}\left[ \cos(n\pi) - \cos(n\pi) \right] \\
+			& = -\frac{1}{n} \cdot 0 \\
+			& = 0
+			\end{align}
+    	\end{proof}
+	
+        \item For all \(n \in \N\)
+        \begin{equation}
+        	\int_{-\pi}^{\pi} \cos^2(nx) ~dx = \pi
+			\text{ and }
+			\int_{-\pi}^{\pi} \sin^2(nx) ~dx = \pi
+        \end{equation}
+        
+        \begin{proof}
+        Consider that \(\cos^2(t) = \frac{1}{2}(1 + \cos{2t})\), \(D_x\left[\frac{1}{2n}\sin(2nx)\right] = \cos(2nx)\), and \(\sin(2n\pi) = 0\) for all \(n \in \N\), thus
+        \begin{align}
+        	\int_{-\pi}^{\pi} \cos^2(nx) ~dx & = \frac{1}{2}\int_{-\pi}^{\pi} (1 + \cos{2nx}) ~dx \\
+			& = \frac{1}{2}\left[ x + \frac{1}{2n}\sin(2nx) \right]^\pi_{-\pi} \\
+			& = \frac{1}{2}\left[ \pi - (-\pi) \right] \\
+			& = \pi
+        \end{align}
+        
+        Then, consider that \(\sin^2(t) = \frac{1}{2}(1 - \cos{2t})\), thus
+        \begin{align}
+        	\int_{-\pi}^{\pi} \sin^2(nx) ~dx & = \frac{1}{2}\int_{-\pi}^{\pi} (1 - \cos{2nx}) ~dx \\
+			& = \frac{1}{2}\left[ x - \frac{1}{2n}\sin(2nx) \right]^\pi_{-\pi} \\
+			& = \frac{1}{2}\left[ \pi - (-\pi) \right] \\
+			& = \pi
+        \end{align}
+
+        \end{proof}
+        
+        \item For all \(m, n \in \N\)
+        \begin{equation} \label{prob2c:first}
+        	\int_{-\pi}^{\pi} \cos(mx)\sin(nx) ~dx = 0
+        \end{equation}
+        For \(m \neq n\)
+        \begin{equation} \label{prob2c:second}
+        	\int_{-\pi}^{\pi} \cos(mx)\cos(nx) ~dx = 0
+			\text{ and }
+			\int_{-\pi}^{\pi} \sin(mx)\sin(nx) ~dx = 0
+        \end{equation}
+        
+        \begin{proof} For the integral in \Cref{prob2c:first}, we integrate by parts by choosing
+        \begin{equation}
+        \begin{array}{c c}
+        u = \sin(nx) & v = \frac{1}{m}\sin(mx) \\
+        du = n\cos(nx) ~dx & dv = \cos(mx) ~dx
+        \end{array}
+        \end{equation}
+        
+        Then,
+        \begin{equation}
+        	\int_{-\pi}^{\pi} \cos(mx)\sin(nx) ~dx = \left[\frac{1}{m}\sin(nx)\sin(mx)
+				- \frac{n}{m} \int \cos(mx)\sin(nx) ~dx \right]_{-\pi}^{\pi}
+        \end{equation}
+        
+        We integrate by parts again by choosing
+        \begin{equation}
+        \begin{array}{c c}
+        u = \cos(nx) & v = -\frac{1}{m}\cos(mx) \\
+        du = -n\sin(nx) ~dx & dv = \sin(mx) ~dx
+        \end{array}
+        \end{equation}
+        
+        Then,
+        \begin{equation}
+        \begin{aligned}
+        	\int_{-\pi}^{\pi} \cos(mx)\sin(nx) ~dx  = & \left[ \frac{1}{m}\sin(nx)\sin(mx)\right. \\
+					& \left.- \frac{n}{m} \left( -\frac{1}{m}\cos(nx)\cos(mx) - \frac{n}{m} \int \cos(mx)\sin(nx) ~dx \right) \right]_{-\pi}^{\pi}
+		\end{aligned}
+        \end{equation}
+        
+        If we let \(A = \int_{-\pi}^{\pi} \cos(mx)\sin(nx) ~dx\), then
+        \begin{gather}
+        A =  \left[ \frac{1}{m}\sin(nx)\sin(mx) + \frac{n}{m^2}\cos(nx)\cos(mx)\right]_{-\pi}^{\pi} + \frac{n^2}{m^2} A \\
+        \left(1 - \frac{n^2}{m^2}\right)A = \left[ \frac{1}{m}\sin(nx)\sin(mx) + \frac{n}{m^2}\cos(nx)\cos(mx)\right]_{-\pi}^{\pi}
+        \end{gather}
+        and since \(\sin(n\pi) = 0\) for all \(n \in \Z\),
+        \begin{align}
+        \left(1 - \frac{n^2}{m^2}\right)A & = \left. \frac{n}{m^2}\cos(nx)\cos(mx)\right|_{-\pi}^{\pi} \\
+        & = \frac{n}{m^2} \left(\cos(n\pi)\cos(m\pi) - \cos(-n\pi)\cos(-m\pi) \right) \\
+        & = \frac{n}{m^2} \left(\cos(n\pi)\cos(m\pi) - \cos(n\pi)\cos(m\pi) \right) = 0
+		\end{align}
+		
+		Hence,
+		\begin{equation*}
+		A = \int_{-\pi}^{\pi} \cos(mx)\sin(nx) ~dx = 0
+		\end{equation*}
+		
+		For the first integral in \Cref{prob2c:second}, consider that \(\cos\alpha \cos\beta = \frac{1}{2}[\cos(\alpha + \beta) + \cos(\alpha - \beta)]\). Then,
+		\begin{align}
+			\int_{-\pi}^{\pi} \cos(mx)\cos(nx) \, dx 
+			& = \frac{1}{2}\int_{-\pi}^{\pi} \cos((m+n)x) + \cos((m-n)x) \, dx \\
+			& = \frac{1}{2}\left[ \frac{1}{m+n}\sin((m+n)x) + \frac{1}{m-n}\sin((m-n)x) \right]_{-\pi}^{\pi} \\
+			& = 0
+		\end{align}
+		
+		For the second integral in \Cref{prob2c:second}, consider that \(\sin\alpha \sin\beta = \frac{1}{2}[\cos(\alpha + \beta) - \cos(\alpha - \beta)]\). Then,
+		\begin{align}
+			\int_{-\pi}^{\pi} \sin(mx)\sin(nx) \, dx 
+			& = \frac{1}{2}\int_{-\pi}^{\pi} \cos((m+n)x) - \cos((m-n)x) \, dx \\
+			& = \frac{1}{2}\left[ \frac{1}{m+n}\sin((m+n)x) - \frac{1}{m-n}\sin((m-n)x) \right]_{-\pi}^{\pi} \\
+			& = 0
+		\end{align}
+        \end{proof}
+    \end{enumerate}
+\end{problem}
