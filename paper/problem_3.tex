@@ -19,12 +19,12 @@
         \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx = \int_{-\pi}^{\pi} a_0 \cos(mx) \, dx + \int_{-\pi}^{\pi} \left( \cos(mx) \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \right) \, dx. 
     \end{equation}
     The integral with $a_0$ resolves to 0, so the derivation continues as
-    \begin{align}
+    \begin{align*}
         \int_{-\pi}^{\pi} f(x) \cos(mx) \, dx &= \int_{-\pi}^{\pi} \left( \cos(mx) \sum_{n=1}^{\infty} a_n \cos(nx) + b_n \sin(nx) \right) \, dx \\
         &= \int_{-\pi}^{\pi} \left( \sum_{n=1}^{\infty} a_n \cos(nx) \cos(mx) + b_n \sin(nx) \cos(mx) \right) \, dx \\
         &= \sum_{n=1}^{\infty} \left( \int_{-\pi}^{\pi} a_n \cos(nx) \cos(mx) + b_n \sin(nx) \cos(mx) \, dx \right) \\
         &= \sum_{n=1}^{\infty} \int_{-\pi}^{\pi} a_n \cos(nx) \cos(mx) + 0 \, dx
-    \end{align}
+    \end{align*}
     Observing the integral, we see that $\cos(nx)\cos(mx)$ is 0 whenever $n \neq m$, and equals $\pi$ whenever $n=m$. Thus, the right hand side gets replaced with 
     \begin{equation}
         a_m \int_{-\pi}^{\pi} \cos^2(mx) \, dx = a_m \pi.
