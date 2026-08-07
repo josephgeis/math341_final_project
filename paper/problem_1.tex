@@ -1,0 +1,79 @@
+\begin{problem}
+
+
+    \begin{enumerate}[(a)]
+
+        \item Series representations of functions with simpler trigonometric functions have been around before the advent of so-called "Fourier" series. We begin with an investigation of the partial differential equation published by Jean Le Rond d'Alembert (1717-1783) to describe the motion of a vibrating string:
+            \begin{equation}
+            \label{problem1:1}
+                u_{xx}(x,t) = u_{tt}(x,t) 
+            \end{equation} 
+            The model is based off of the function, $u(x,t)$ which represents the displacement of the string at time $t \geq 0$ and at the point $x \in [0,\pi]$. 
+            Since the string is attached at the ends, we also get 
+            \begin{equation}
+            \label{problem1:2}
+                u(0,t) = 0 \quad \text{and} \quad u(\pi,t) = 0
+            \end{equation}
+            At time $t=0$, the string is displaced some initial amount, so the moment that the string is released is modeled by
+            \begin{equation}
+            \label{problem1:3}
+                u_t (x,0) = 0
+            \end{equation}
+            Notice that we are given an initial veolocity of 0. The task now is to find a function $u(x,t)$ that satisfies (1), (2), and (3). It is proposed that such an equation looks like 
+            \begin{equation}
+            \label{equation:wave}
+                u(x,t) = b_n \sin(nx) \cos(nt) 
+            \end{equation}
+            for any choice of $n \in \N$ and $b_n \in \R$.
+            \begin{proof} Let $u(x,t) = b_n \sin(nx) \cos(nt)$ where $n \in \N$ and $b_n \in \R$.
+
+                (1) Computing each second partial derivative yields
+                \begin{align}
+                D_{x} u(x,t) &= b_n n \cos(nx) \cos(nt) \\
+                D_{xx} u(x,t) &= -b_n n^2 \sin(nx) \cos(nt)
+                \end{align}
+                
+                \begin{align}
+                \label{align:dt}
+                D_{t} u(x,t) &= -b_n n \sin(nx) \sin(nt) \\
+                D_{tt} u(x,t) &= -b_n n^2 \sin(nx) \cos(nt)
+                \end{align}
+
+                We see that $D_{xx} = D_{tt}$.
+
+                (2) We now observe $u(0,t)$ and $u(\pi,t)$.
+                \begin{equation}
+                    u(0,t) = b_n \sin(n0) \cos(nt) = 0
+                \end{equation}
+                \begin{equation}
+                \label{equation:sinpi}
+                    u(\pi,t) = b_n \sin(n \pi) \cos(nt) = 0
+                \end{equation}
+
+                (3) We computed $u_t$ previously in \eqref{align:dt}. It follows that 
+                \begin{equation}
+                    u_t(x,0) = -b_n n \sin(nx) \sin(n0) = 0.
+                \end{equation}
+                
+            \end{proof}
+            We see that $n\in\N$ is a necessary condition for these equations, particularly in \eqref{equation:sinpi}, in order to ensure that $\sin(n\pi)=0$ Some $n\not\in\N$ results in a non-zero value of $\sin(n\pi)$
+
+            \item We accordingly see that any finite sum of functions of the form \eqref{equation:wave} would also satisfy \eqref{problem1:1}, \eqref{problem1:2} and \eqref{problem1:3} since $n \in \N$. This condition on $n$ is our key to finite sums.
+
+            The punchline comes here. We observe that functions of the form 
+            \begin{equation}
+            \label{equation:wavesolution}
+                u(x,t) = \sum_{n=1}^{N}b_n \sin(nx) \cos(nt)
+            \end{equation}
+            solve d'Alemberts \textit{wave equation}!
+            However, while a general solution is given, the particular solution depends on initial conditions, which colloquially could be considered as the initial displacement as a string is plucked, represented by $f(x) = u(x,0)$. If we can then represent $f(x)$ as 
+            \begin{equation}
+                f(x) = \sum_{n=1}^{N} b_n \sin(nx)
+            \end{equation}
+            where there are suitable coefficients $b_1,b_2,...,b_N$ so $f(x)$ can be written as a sum of sine funcitons, then \eqref{equation:wavesolution} solves the wave equation completely!
+
+            The question as we continue investigating Fourier Series is this: What functions can we represent as linear combinations of trigonometric functions, and how general can some $f(x)$ be?
+
+    \end{enumerate}
+
+\end{problem}
